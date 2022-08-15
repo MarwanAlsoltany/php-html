@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to **%[packageName]%** will be documented in this file.
+All notable changes to **PHP-HTML** will be documented in this file.
 
 <br />
 
@@ -16,7 +16,7 @@ in place of the first <br /> tag in this document
 
 <br />
 
-## [[1.0.1] - YYYY-MM-DD](https://github.com/%[author]%/%[package]%/compare/v1.0.0...v1.0.1)
+## [[1.0.1] - YYYY-MM-DD](https://github.com/MarwanAlsoltany/php-html/commits/v1.0.0...v1.0.1)
 - Update `Something`:
     - Details ...
     - Update ...
@@ -24,17 +24,17 @@ in place of the first <br /> tag in this document
 
 <br />
 
-## [[1.0.0] - YYYY-MM-DD](https://github.com/%[author]%/%[package]%/commits/v1.0.0-rc...v1.0.0)
+## [[1.0.0] - YYYY-MM-DD](https://github.com/MarwanAlsoltany/php-html/commits/v1.0.0-rc...v1.0.0)
 - Initial release.
 
 <br />
 
-## [[1.0.0-rc] - YYYY-MM-DD](https://github.com/%[author]%/%[package]%/compare/v1.0.0-beta...v1.0.0-rc)
+## [[1.0.0-rc] - YYYY-MM-DD](https://github.com/MarwanAlsoltany/php-html/compare/v1.0.0-beta...v1.0.0-rc)
 - Release candidate.
 
 <br />
 
-## [[1.0.0-beta] - YYYY-MM-DD](https://github.com/%[author]%/%[package]%/commits/v1.0.0-beta)
+## [[1.0.0-beta] - YYYY-MM-DD](https://github.com/MarwanAlsoltany/php-html/commits/v1.0.0-beta)
 - Beta release.
 
 <br />

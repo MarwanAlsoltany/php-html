@@ -1,56 +1,51 @@
 {
-    "name": "%[author]%/%[package]%",
+    "name": "marwanalsoltany/php-html",
     "type": "library",
     "license": "MIT",
-    "description": "%[description]%",
+    "description": "A fluent interface for creating HTML using PHP.",
     "keywords": [
         "php",
-        "library"
+        "library",
+        "php-html",
+        "html",
+        "fluent"
     ],
     "authors": [
         {
             "name": "Marwan Al-Soltany",
             "email": "MarwanAlsoltany+gh@gmail.com"
-        },
-        {
-            "name": "%[authorName]%",
-            "email": "%[authorEmail]%"
         }
     ],
     "funding": [
         {
             "type": "ko-fi",
-            "url": "https://ko-fi.com/%[author]%"
+            "url": "https://ko-fi.com/marwanalsoltany"
         }
     ],
-    "homepage": "https://github.com/%[author]%/%[package]%#readme",
+    "homepage": "https://github.com/MarwanAlsoltany/php-html#readme",
     "support": {
-        "docs": "https://github.com/%[author]%/%[package]%/blob/master/README.md",
-        "issues": "https://github.com/%[author]%/%[package]%/issues"
+        "docs": "https://github.com/MarwanAlsoltany/php-html/blob/master/README.md",
+        "issues": "https://github.com/MarwanAlsoltany/php-html/issues"
     },
     "require": {
-        "php" : ">=8.0"
+        "php" : ">=7.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^9.5",
-        "phpbench/phpbench": "^1.2",
         "phpstan/phpstan": "^1.8",
         "friendsofphp/php-cs-fixer": "^3.9",
         "code-lts/doctum": "^5.5"
     },
     "autoload": {
         "psr-4": {
-            "Vendor\\Package\\": "src"
+            "MAKS\\PhpHtml\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Vendor\\Package\\": "tests"
+            "MAKS\\PhpHtml\\": "tests"
         }
     },
-    "bin": [
-        "bin/executable"
-    ],
     "extra": {
         "branch-alias": {
             "dev-master": "1.0-dev"
@@ -63,12 +58,10 @@
         "php-cs-fixer": "vendor/bin/php-cs-fixer fix --verbose --config=.php-cs-fixer.dist.php --diff --dry-run --allow-risky=yes --show-progress=none",
         "phpstan": "vendor/bin/phpstan analyze --verbose --configuration=phpstan.neon.dist",
         "phpunit": "vendor/bin/phpunit --verbose --configuration=phpunit.xml.dist",
-        "phpbench": "vendor/bin/phpbench run --verbose --config=phpbench.json.dist --report=overview",
         "doctum": "php vendor/bin/doctum.php update .doctum.dist.php --verbose --force --no-progress || printf '\\n%s' ''",
         "fix": "@php-cs-fixer",
         "analyze": "@phpstan",
         "test": "@phpunit",
-        "bench": "@phpbench",
         "document": "@doctum",
         "build": [
             "@start",
@@ -77,8 +70,6 @@
             "@analyze",
             "@separate",
             "@test",
-            "@separate",
-            "@bench",
             "@separate",
             "@document",
             "@finish"
