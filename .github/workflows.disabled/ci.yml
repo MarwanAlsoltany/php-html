@@ -27,7 +27,7 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - 8.1
+                    - 8.0
 
         outputs:
             cache-dir: ${{ steps.config.outputs.cache-dir }}
@@ -68,7 +68,7 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - 8.1
+                    - 8.0
 
         steps:
             -
@@ -79,7 +79,7 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php-version }}
-                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd'
+                    extensions: 'mbstring, json, dom, xml, libxml'
                     tools: composer
                     coverage: none
                 env:
@@ -112,7 +112,7 @@ jobs:
         strategy:
             matrix:
                 php-version:
-                    - 8.1
+                    - 8.0
 
         steps:
             -
@@ -123,7 +123,7 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php-version }}
-                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd'
+                    extensions: 'mbstring, json, dom, xml, libxml'
                     tools: composer
                     coverage: none
                 env:
@@ -159,16 +159,9 @@ jobs:
             matrix:
                 operating-system:
                     - ubuntu-latest
-                    - windows-latest
                 php-version:
-                    - 8.1
+                    - 8.0
                 allow-failures: [false]
-                include:
-                    -
-                        operating-system: macos-latest
-                        php-version: 8.1
-                        allow-failures: true
-                        coverage: xdebug
 
         steps:
             -
@@ -179,7 +172,7 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php-version }}
-                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd, xdebug'
+                    extensions: 'mbstring, json, dom, xml, libxml, xdebug'
                     ini-values: 'memory_limit=1024M, max_execution_time=360'
                     tools: composer
                     coverage: xdebug
@@ -227,56 +220,3 @@ jobs:
             #     env:
             #         CODACY_PROJECT_TOKEN: YOUR_CODACY_PROJECT_TOKEN
             #     uses: codecov/codecov-action@v3
-
-
-    phpbench:
-
-        needs:
-            - composer
-            - phpunit
-
-        name: 'PHPBench: performance bechmarks (${{ matrix.php-version }}) [${{ matrix.operating-system }}]'
-
-        runs-on: ${{ matrix.operating-system }}
-
-        strategy:
-            matrix:
-                operating-system:
-                    - ubuntu-latest
-                    - windows-latest
-                php-version:
-                    - 8.1
-
-        steps:
-            -
-                name: 'Checkout code'
-                uses: actions/checkout@v3
-            -
-                name: 'Setup PHP'
-                uses: shivammathur/setup-php@v2
-                with:
-                    php-version: ${{ matrix.php-version }}
-                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd, opcache'
-                    ini-values: 'memory_limit=-1, max_execution_time=3600, opcache.enable_cli=1, opcache.jit=1235, opcache.jit_buffer_size=256M'
-                    tools: composer
-                    coverage: none
-                env:
-                    phpts: ts
-                    update: true
-            -
-                name: 'Get Composer cache directory'
-                id: composer-config
-                run: 'echo "::set-output name=cache-dir::$(composer config cache-files-dir)"'
-            -
-                name: 'Cache Composer dependencies'
-                uses: actions/cache@v3
-                with:
-                    path: ${{ steps.composer-config.outputs.cache-dir }}
-                    key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.json') }}
-                    restore-keys: ${{ runner.os }}-composer-
-            -
-                name: 'Install Composer dependencies'
-                run: 'composer install --prefer-dist --no-scripts --no-suggest --no-interaction'
-            -
-                name: 'Run PHPBench'
-                run: 'vendor/bin/phpbench run --verbose --config=phpbench.json.dist --report=overview'
