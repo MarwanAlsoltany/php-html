@@ -81,7 +81,7 @@ jobs:
                 uses: shivammathur/setup-php@v2
                 with:
                     php-version: ${{ matrix.php-version }}
-                    extensions: 'mbstring, ctype, json, dom, intl, fileinfo, gd'
+                    extensions: 'mbstring, json, dom, xml, libxml'
                     tools: composer
                     coverage: none
                 env:
