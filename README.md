@@ -1,6 +1,6 @@
 <!-- add a logo here if there is any, a <br/> after the image is recommended -->
 
-<h1 align="center"><i>PHP-HTML</i></h1>
+<h1 align="center">PHP-HTML</h1>
 
 <div align="center">
 
@@ -49,25 +49,6 @@ A fluent interface for creating HTML using PHP.
 
 ---
 
-
-## Key Features
-
-1. One
-2. Two
-3. ...
-
-
----
-
-
-## About
-
-Add a description here ...
-
-
----
-
-
 ## Installation
 
 #### Using Composer:
@@ -84,23 +65,83 @@ composer require marwanalsoltany/php-html
 ---
 
 
-## Examples
+## Why Does This Exist?
 
-Add some examples here ...
+Why not?
 
-```php
-
-// add some code here
-
-```
+The real reason why this exist is, I really hate writing HTML within PHP code (especially in classes). If it is more than one line and it is not a template, it looks really ugly and it doesn't feel like it belongs to the code although it does. This package provides a fluent interface for the sole reason of not writing HTML in PHP. It also validates, indents, and provides IDE-IntelliSense to make it as easy as it gets.
 
 
 ---
 
 
-## More
 
-Add as many sections as needed ...
+## Examples
+
+Here is an example of how it works:
+
+```php
+
+// on the fly
+echo MAKS\PhpHtml\HTML::div('This is a div!', ['class' => 'container']);
+
+// the whole deal
+echo (new \MAKS\PhpHtml\HTML())
+    ->element('h1', 'HTML Forms', ['class' => 'title'])
+    ->open('form', ['method' => 'POST'])
+        ->comment('SIMPLE FORM')
+        ->h2('Example', ['class' => 'subtitle'])
+        ->p('This is an example form.')
+        ->br()
+        ->if(isset($variable))->div('$variable is set')
+        ->open('fieldset')
+            ->legend('Form 1', ['style' => 'color: #333;'])
+            ->label('Message: ', ['class' => 'text'])
+            ->input(['type' => 'text', 'required'])
+            ->entity('nbsp')
+            ->input(['type' => 'submit', 'value' => 'Submit'])
+        ->close()
+        ->open('ul', ['class' => 'errors'])
+            ->do(function () {
+                $errors = ['Error 1', 'Error 2', 'Error 3'];
+
+                foreach ($errors as $error) {
+                    $this->li($error);
+                }
+            })
+        ->close()
+    ->close()
+->render();
+
+```
+
+The generated HTML would look like this:
+
+```html
+<!-- on the fly -->
+<div class="container">This is a div!</div>
+
+<!-- the whole deal -->
+<h1 class="title">HTML Forms</h1>
+<form method="POST">
+    <!-- SIMPLE FORM -->
+    <h2 class="subtitle">Example</h2>
+    <p>This is an example form.</p>
+    <br />
+    <fieldset>
+        <legend style="color: #333;">Form 1</legend>
+        <label class="text">Message: </label>
+        <input type="text" required />
+        &nbsp;
+        <input type="submit" value="Submit" />
+    </fieldset>
+    <ul class="errors">
+        <li>Error 1</li>
+        <li>Error 2</li>
+        <li>Error 3</li>
+    </ul>
+</form>
+```
 
 
 ---
@@ -134,7 +175,7 @@ Copyright (c) 2022 Marwan Al-Soltany. All rights reserved.
 <!-- [github-cd-icon]: https://github.com/MarwanAlsoltany/php-html/actions/workflows/cd.yml/badge.svg -->
 [github-ci-icon]: https://img.shields.io/github/workflow/status/MarwanAlsoltany/php-html/CI?style=flat&logo=github
 [github-cd-icon]: https://img.shields.io/github/workflow/status/MarwanAlsoltany/php-html/CD?style=flat&logo=github
-[codecov-icon]: https://codecov.io/gh/MarwanAlsoltany/php-html/branch/master/graph/badge.svg?token=CODECOV_TOKEN
+[codecov-icon]: https://codecov.io/gh/MarwanAlsoltany/php-html/branch/master/graph/badge.svg?token=FNU3ZNCHTN
 <!-- [codacy-coverage-icon]: https://app.codacy.com/project/badge/Coverage/YOUR_CODACY_PROJECT_TOKEN -->
 <!-- [codacy-grade-icon]: https://app.codacy.com/project/badge/Grade/YOUR_CODACY_PROJECT_TOKEN -->
 [vscode-icon]: https://img.shields.io/static/v1?logo=visualstudiocode&label=&message=Open%20in%20VS%20Code&labelColor=2c2c32&color=007acc&logoColor=007acc
@@ -154,5 +195,5 @@ Copyright (c) 2022 Marwan Al-Soltany. All rights reserved.
 <!-- [codacy-coverage-href]: https://app.codacy.com/project/badge/Coverage/YOUR_CODACY_PROJECT_TOKEN -->
 <!-- [codacy-grade-href]: https://app.codacy.com/project/badge/Grade/YOUR_CODACY_PROJECT_TOKEN -->
 [vscode-href]: https://open.vscode.dev/MarwanAlsoltany/php-html
-[tweet-href]: https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Fphp-html&text=Check%20out%MarwanAlsoltany%2Fphp-html%20on%20GitHub%21
+[tweet-href]: https://twitter.com/intent/tweet?url=https%3A%2F%2Fgithub.com%2FMarwanAlsoltany%2Fphp-html&text=Check%20out%MarwanAlsoltany%2Fphp-html%20on%20GitHub%21%20%23PHP
 [github-stars-href]: https://github.com/MarwanAlsoltany/php-html/stargazers
