@@ -35,21 +35,21 @@ use BadMethodCallException;
  * (new HTML())
  *     ->element('h1', 'HTML Forms', ['class' => 'title'])
  *     ->open('form', ['method' => 'POST'])
+ *         ->comment('SIMPLE FORM')
  *         ->h2('Example', ['class' => 'subtitle'])
  *         ->p('This is an example form.')
- *         ->br(null)
- *         ->if($someVar === true)->div('$someVar is true')
+ *         ->br()
+ *         ->if(isset($variable))->div('$variable is set')
  *         ->open('fieldset')
  *             ->legend('Form 1', ['style' => 'color: #333;'])
  *             ->label('Message: ', ['class' => 'text'])
- *             ->input(null, ['type' => 'text', 'required'])
- *             ->entity('nbsp', 2)
- *             ->input(null, ['type' => 'submit', 'value' => 'Submit'])
+ *             ->input(['type' => 'text', 'required'])
+ *             ->entity('nbsp')
+ *             ->input(['type' => 'submit', 'value' => 'Submit'])
  *         ->close()
- *         ->condition(count($errors))
  *         ->open('ul', ['class' => 'errors'])
- *             ->do(function () use ($errors) {
- *                 foreach ($errors as $error) {
+ *             ->do(function () {
+ *                 foreach (['Error 1', 'Error 2', 'Error 3'] as $error) {
  *                     $this->li($error);
  *                 }
  *             })
