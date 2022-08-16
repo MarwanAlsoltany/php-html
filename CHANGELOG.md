@@ -4,6 +4,11 @@ All notable changes to **PHP-HTML** will be documented in this file.
 
 <br />
 
+## [[1.0.0] - 2022-08-17](https://github.com/MarwanAlsoltany/php-html/commits/v1.0.0)
+- Initial release.
+
+<br />
+
 ## [Unreleased]
 
 <br />
