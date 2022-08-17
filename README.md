@@ -69,7 +69,7 @@ composer require marwanalsoltany/php-html
 
 Why not?
 
-The real reason why this exist is, I really hate writing HTML within PHP code (especially in classes). If it is more than one line and it is not a template, it looks really ugly and it doesn't feel like it belongs to the code although it does. This package provides a fluent interface for the sole reason of not writing HTML in PHP. It also validates, indents, and provides IDE-IntelliSense to make it as easy as it gets.
+This is something that I exclusively created for myself. The real reason why this exist is, I really hate writing HTML within PHP code (especially in classes). If it is more than one line and it is not a template, it looks really ugly and it doesn't feel like it belongs to the code although it does. This package provides a fluent interface for the sole reason of not writing raw HTML in PHP. It also indents and validates the generated HTML and provides IDE-IntelliSense for all HTML elements to make it as easy as it gets.
 
 
 ---
@@ -171,10 +171,10 @@ Copyright (c) 2022 Marwan Al-Soltany. All rights reserved.
 [maintenance-icon]: https://img.shields.io/badge/maintained-yes-orange.svg?style=flat&logo=github
 [documentation-icon]: https://img.shields.io/website-up-down-blue-red/http/MarwanAlsoltany.github.io/php-html.svg
 <!-- GitHub Actions native badges -->
-<!-- [github-ci-icon]: https://github.com/MarwanAlsoltany/php-html/actions/workflows/ci.yml/badge.svg -->
-<!-- [github-cd-icon]: https://github.com/MarwanAlsoltany/php-html/actions/workflows/cd.yml/badge.svg -->
-[github-ci-icon]: https://img.shields.io/github/workflow/status/MarwanAlsoltany/php-html/CI?style=flat&logo=github
-[github-cd-icon]: https://img.shields.io/github/workflow/status/MarwanAlsoltany/php-html/CD?style=flat&logo=github
+[github-ci-icon]: https://github.com/MarwanAlsoltany/php-html/actions/workflows/ci.yml/badge.svg
+[github-cd-icon]: https://github.com/MarwanAlsoltany/php-html/actions/workflows/cd.yml/badge.svg
+<!-- [github-ci-icon]: https://img.shields.io/github/workflow/status/MarwanAlsoltany/php-html/CI?style=flat&logo=github -->
+<!-- [github-cd-icon]: https://img.shields.io/github/workflow/status/MarwanAlsoltany/php-html/CD?style=flat&logo=github -->
 [codecov-icon]: https://codecov.io/gh/MarwanAlsoltany/php-html/branch/master/graph/badge.svg?token=FNU3ZNCHTN
 <!-- [codacy-coverage-icon]: https://app.codacy.com/project/badge/Coverage/YOUR_CODACY_PROJECT_TOKEN -->
 <!-- [codacy-grade-icon]: https://app.codacy.com/project/badge/Grade/YOUR_CODACY_PROJECT_TOKEN -->
